@@ -1,0 +1,50 @@
+{
+   "artists":{
+      "href":"https://api.spotify.com/v1/search?query=Elton+John&type=artist&offset=0&limit=20",
+      "items":[
+         {
+            "external_urls":{
+               "spotify":"https://open.spotify.com/artist/3PhoLpVuITZKcymswpck5b"
+            },
+            "followers":{
+               "href":null,
+               "total":6013763
+            },
+            "genres":[
+               "glam rock",
+               "mellow gold",
+               "piano rock",
+               "soft rock"
+            ],
+            "href":"https://api.spotify.com/v1/artists/3PhoLpVuITZKcymswpck5b",
+            "id":"3PhoLpVuITZKcymswpck5b",
+            "images":[
+               {
+                  "height":640,
+                  "url":"https://i.scdn.co/image/f50ae3e5cf3637c5f486b6205468c245644be36e",
+                  "width":640
+               },
+               {
+                  "height":320,
+                  "url":"https://i.scdn.co/image/6381c0467a37ad144dff97f716b1d0a3a1e79e56",
+                  "width":320
+               },
+               {
+                  "height":160,
+                  "url":"https://i.scdn.co/image/566f206dcb14de731784c8a68aec8a46629cc621",
+                  "width":160
+               }
+            ],
+            "name":"Elton John",
+            "popularity":85,
+            "type":"artist",
+            "uri":"spotify:artist:3PhoLpVuITZKcymswpck5b"
+         }
+      ],
+      "limit":20,
+      "next":null,
+      "offset":0,
+      "previous":null,
+      "total":18
+   }
+}

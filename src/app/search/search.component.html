@@ -1,3 +1,4 @@
+<!--search tools-->
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
@@ -7,23 +8,33 @@
     </div>
 	<div class="row">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Artist's name" aria-label="Enter an artist name" aria-describedby="basic-addon2">
+            <input type="text" [(ngModel)]="term" class="form-control" placeholder="Artist's name" aria-label="Enter an artist name" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Search</button>
+              <button class="btn btn-outline-secondary" type="button" (click)="search()">Search</button>
             </div>
           </div>                
 	</div>
 </div>
 
-<!--<form class="form-inline">
-    <div class="form-group">
-      <input type="search"
-             class="form-control"
-             placeholder="Enter search string"
-             #search>
+<!--grid-->
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    <div class="col mb-4" *ngFor="let item of data">
+        <div class="card">
+        <img src="{{item.images[2].url}}" class="card-img-top cropped" alt="...">
+        <div class="card-body">
+            <b class="card-title"> <a [routerLink]="['/profile', item.id]" class="nav-link" href="#">{{item.name}}</a></b>
+        </div>
+        </div>
+    </div> 
     </div>
-    <button class="btn btn-primary"
-            (click)="doSearch(search.value)">
-            Search
-    </button>
-  </form>-->
+</div>
+
+<a *ngFor="let product of products"
+  [routerLink]="['/product-details', product.id]">
+  {{ product.name }}
+</a>
+
+
+<!--<h1>{{term}}</h1>
+<p>{{json}}</p>-->

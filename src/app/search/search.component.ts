@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { AjaxService } from '../services/ajax.service';
+import { AjaxResponse } from '../interfaces/ajax.interfaces';
+import { Item,Image} from '../interfaces/artist';
 
 @Component({
   selector: 'app-search',
@@ -8,14 +10,24 @@ import { ApiService } from '../api.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private ajaxService: AjaxService) { }
 
-  ngOnInit(): void {
-    
+  public term : string;
+  public json : string;
+  public data : any[];
+  
+
+
+  ngOnInit(){
+    this.term = "Trey";
   }
 
-  doSearch(term:string) {
-    this.apiService.search(term)
-  }
+  search() {
+    this.data = this.ajaxService.search(this.term);
+    this.json = JSON.stringify(this.data);
 
+    for (const item in this.data) {
+      console.log(`value = ${this.data[item].name}`)
+    }
+  }
 }

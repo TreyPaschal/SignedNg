@@ -10,8 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { ApiService } from './api.service';
+import { AjaxService } from './services/ajax.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { ApiService } from './api.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [[ApiService]],
+  providers: [[AjaxService]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
