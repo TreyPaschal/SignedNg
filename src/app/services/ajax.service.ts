@@ -15,7 +15,7 @@ export class AjaxService {
   searchResult : any;
   search(term:string) {
    
-      let url = `http://localhost:5000/search?name=${term}`;
+      let url = `https://enigmatic-fjord-97696.herokuapp.com/search?name=${term}`;
       this.httpClient.get<AjaxResponse<Item[]>>(url, {observe: 'response'})
       .subscribe(data => this.searchResult = data.body);
       return this.searchResult;

@@ -48,7 +48,7 @@ startTimer() {
   data: Item;
   getProfile() {
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `http://localhost:5000/artist?id=${this.id}`;
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com//artist?id=${this.id}`;
       this.httpClient
         .get<Item>(apiURL)
         .toPromise()
@@ -73,7 +73,7 @@ startTimer() {
 
   getDataPoints(id : string) { 
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `http://localhost:5000/data?id=${id}`;
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/data?id=${id}`;
       this.httpClient
         .get<any>(apiURL)
         .toPromise()
@@ -121,7 +121,7 @@ startTimer() {
     var config = {
       headers: { 'Content-Type': 'application/json'}
       }
-    return this.httpClient.post("http://localhost:5000/insert/", data, config);
+    return this.httpClient.post("https://enigmatic-fjord-97696.herokuapp.com/insert/", data, config);
     
   }
 
