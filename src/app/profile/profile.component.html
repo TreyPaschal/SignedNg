@@ -1,1 +1,93 @@
-<p>profile works!</p>
+<div class="row">
+    <div class="col col-md-3">
+        <div class="card">
+            <img class="card-img-top" src="{{data.images[1].url}}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{data.name}}</h4>
+                <p class="card-text"><span class="metric" *ngFor="let item of data.genres">{{item}} </span></p>
+                <p>{{timeLeft}}</p>
+                <h4><span class="badge badge-success">ACI: {{aci}}</span></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-9">
+        <div class="chart-wrapper">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                [plugins]="lineChartPlugins">
+            </canvas>
+        </div>
+    </div>
+</div>
+<!--Grid-->
+<div class="row">
+    <div class="col col-md-12 albums">
+        <div class="container-fluid spotify-app">
+            <div class="row">
+                <section class="col-md-12 clean-paddings">
+                    <h4>Popular</h4>
+                    <table class="table table-songs">
+                        <tbody>
+                            <tr tabindex="1">
+                                <td>
+                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
+                                        <span class="fa fa-play fa-stack-1x"></span>
+                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
+                                    </a>
+                                </td>
+                                <td><span class="fa fa-check"></span></td>
+                                <td>Memory</td>
+                                <td>Sugarcult</td>
+                                <td>Palm Trees and Power Lines</td>
+                                <td class="secondary-info">2016-07-23</td>
+                                <td class="secondary-info">3:54</td>
+                            </tr>
+                            <tr tabindex="2">
+                                <td>
+                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
+                                        <span class="fa fa-play fa-stack-1x"></span>
+                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
+                                    </a>
+                                </td>
+                                <td><span class="fa fa-check"></span></td>
+                                <td>Memory</td>
+                                <td>Sugarcult</td>
+                                <td>Palm Trees and Power Lines</td>
+                                <td class="secondary-info">2016-07-23</td>
+                                <td class="secondary-info">3:54</td>
+                            </tr>
+                            <tr tabindex="1">
+                                <td>
+                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
+                                        <span class="fa fa-play fa-stack-1x"></span>
+                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
+                                    </a>
+                                </td>
+                                <td><span class="fa fa-check"></span></td>
+                                <td>Memory</td>
+                                <td>Sugarcult</td>
+                                <td>Palm Trees and Power Lines</td>
+                                <td class="secondary-info">2016-07-23</td>
+                                <td class="secondary-info">3:54</td>
+                            </tr>
+                            <tr tabindex="2">
+                                <td>
+                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
+                                        <span class="fa fa-play fa-stack-1x"></span>
+                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
+                                    </a>
+                                </td>
+                                <td><span class="fa fa-check"></span></td>
+                                <td>Memory</td>
+                                <td>Sugarcult</td>
+                                <td>Palm Trees and Power Lines</td>
+                                <td class="secondary-info">2016-07-23</td>
+                                <td class="secondary-info">3:54</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

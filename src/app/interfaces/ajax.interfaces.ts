@@ -3,3 +3,9 @@ export interface AjaxResponse<T> {
     errorMessage? : string,
     data : T
 }
+
+export interface DataPoint{
+    artistId : string,
+    aci: string,
+    timestamp: string
+}

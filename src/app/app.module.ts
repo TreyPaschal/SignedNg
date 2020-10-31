@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 import { AjaxService } from './services/ajax.service';
 
@@ -26,7 +27,8 @@ import { AjaxService } from './services/ajax.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [[AjaxService]],
   bootstrap: [AppComponent]
