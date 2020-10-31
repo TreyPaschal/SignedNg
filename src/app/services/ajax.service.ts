@@ -24,7 +24,7 @@ export class AjaxService {
 
   artist: any;
   profile(id:string) {
-      let url = `http://localhost:5000/artist?id=${id}`;
+      let url = `https://enigmatic-fjord-97696.herokuapp.com/artist?id=${id}`;
       this.httpClient.get<AjaxResponse<Item[]>>(url, {observe: 'response'})
       .subscribe(data => this.artist = data.body);
       return this.artist;
@@ -32,20 +32,20 @@ export class AjaxService {
 
   dataPoints: any;
   history(id:string) {
-      let url = `http://localhost:5000/data?id=${id}`;
+      let url = `https://enigmatic-fjord-97696.herokuapp.com/data?id=${id}`;
       this.httpClient.get<AjaxResponse<DataPoint[]>>(url, {observe: 'response'})
       .subscribe(data => this.dataPoints = data.body);
       return this.dataPoints;
   } 
 
   insert(dataPoint:DataPoint){
-    this.httpClient.post<any>('http://localhost:5000/insert', dataPoint);
+    this.httpClient.post<any>('https://enigmatic-fjord-97696.herokuapp.com/insert', dataPoint);
   }
 
   profileData : any;
   getProfile(id : string) {
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `http://localhost:5000/artist?id=${id}`;
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/artist?id=${id}`;
       this.httpClient
         .get<Item>(apiURL)
         .toPromise()

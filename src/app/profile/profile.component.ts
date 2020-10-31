@@ -48,7 +48,7 @@ startTimer() {
   data: Item;
   getProfile() {
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com//artist?id=${this.id}`;
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/artist?id=${this.id}`;
       this.httpClient
         .get<Item>(apiURL)
         .toPromise()
