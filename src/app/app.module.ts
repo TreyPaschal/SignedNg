@@ -15,6 +15,8 @@ import { ChartsModule } from 'ng2-charts';
 
 import { AjaxService } from './services/ajax.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -40,7 +40,7 @@ startTimer() {
         this.timeLeft--;
       } else {
         this.getProfile();
-        //every 30 seconds
+        //every 30 secondsgit commit
         this.timeLeft = 30;
       }
     },1000)
@@ -89,6 +89,13 @@ startTimer() {
             }
             
           }else{
+            if(this.dataPoints.length > 6)
+            {
+              var indexToRemove = 0;
+              var numberToRemove = 1;
+              this.dataPoints.splice(indexToRemove, numberToRemove);
+              this.dataLabels.splice(indexToRemove, numberToRemove);
+            }
             this.dataPoints.push(this.aci);
             this.dataLabels.push(Date.now().toString());
           }
