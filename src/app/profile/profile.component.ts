@@ -40,6 +40,7 @@ startTimer() {
         this.timeLeft--;
       } else {
         this.getProfile();
+        //every 30 seconds
         this.timeLeft = 30;
       }
     },1000)
