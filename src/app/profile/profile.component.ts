@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  timeLeft: number = 10;
+  timeLeft: number = 30;
   interval;
 
 startTimer() {
@@ -40,7 +40,7 @@ startTimer() {
         this.timeLeft--;
       } else {
         this.getProfile();
-        this.timeLeft = 10;
+        this.timeLeft = 30;
       }
     },1000)
   }
@@ -56,7 +56,6 @@ startTimer() {
           this.data = res;
           this.aci = this.setAci(this.data);
           this.updateDataPoints(this.data, this.aci);
-          
           this.getDataPoints(this.id);
           resolve();
           
@@ -72,6 +71,7 @@ startTimer() {
   }
 
   getDataPoints(id : string) { 
+   
     const promise = new Promise((resolve, reject) => {
       const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/data?id=${id}`;
       this.httpClient
@@ -79,13 +79,20 @@ startTimer() {
         .toPromise()
         .then((res: any) => {
           // Success
-          //this.dataPoints = [];
-          //this.dataLabels=[];
-          for (let entry of res) {
-            this.dataPoints.push(entry.aci);
-            this.dataLabels.push(entry.timestamp);
+          
+          if(this.dataPoints == []){
+            for (let entry of res) {
+              this.dataPoints.push(entry.aci);
+              this.dataLabels.push(entry.timestamp);
+              this.dataPoints.reverse();
+            }
+            
+          }else{
+            this.dataPoints.push(this.aci);
+            this.dataLabels.push(Date.now().toString());
           }
-          this.dataPoints.reverse();
+          
+
           resolve();
           return res;
           
