@@ -20,7 +20,7 @@ border-top: solid 1px #fcfcfc;
   text-align: center;
 }
 
-
+.album-image{border:solid 3px white; border-radius:50%}
 
 
 .side-nav {

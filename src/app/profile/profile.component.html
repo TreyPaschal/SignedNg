@@ -42,7 +42,7 @@
 </div>
 
 
-<!--Grid
+
 <div class="row">
     <div class="col col-md-12 albums">
         <div class="container-fluid spotify-app">
@@ -51,9 +51,9 @@
                     <h4>Popular Tracks</h4>
                     <table class="table table-songs">
                         <tbody>
-                            <tr *ngFor="let item of popular">
-                                <td><img src ="{{item.images[2].url}}" class='album-image'/></td>
-                                <td>{{item.name}}</td>
+                            <tr *ngFor="let track of popularTracks" >
+                                
+                                <td>{{track.name}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
 <!--Grid-->
 <div class="row">

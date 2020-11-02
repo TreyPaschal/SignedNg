@@ -4,7 +4,7 @@ import { ChartDataSets} from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataPoint, Album, Item } from '../interfaces/ajax.interfaces';
+import { DataPoint, Album, Item, Tracks, Track } from '../interfaces/ajax.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getProfile();
     this.getAlbums();
-    //this.getPopular();
+    this.getPopular();
     this.startTimer();
     
   }
@@ -176,16 +176,16 @@ startTimer() {
     return promise;
   }
 
-  popular: any[];
+  popularTracks: Tracks[];
   getPopular() { 
     const promise = new Promise((resolve, reject) => {
       const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/popular?id=${this.id}`;
       this.httpClient
-        .get<any>(apiURL)
+        .get<Track[]>(apiURL)
         .toPromise()
-        .then((res: Album) => {
-          this.albums = res['tracks'];
-          console.log(res);
+        .then((res: Track[]) => {
+          this.popularTracks = res['tracks'];
+          console.log(JSON.stringify(res));
           resolve();
           
         },
