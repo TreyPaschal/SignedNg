@@ -19,70 +19,62 @@
         </div>
     </div>
 </div>
+
 <!--Grid-->
 <div class="row">
     <div class="col col-md-12 albums">
         <div class="container-fluid spotify-app">
             <div class="row">
                 <section class="col-md-12 clean-paddings">
-                    <h4>Popular</h4>
+                    <h4>ACI History</h4>
                     <table class="table table-songs">
                         <tbody>
-                            <tr tabindex="1">
-                                <td>
-                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
-                                        <span class="fa fa-play fa-stack-1x"></span>
-                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
-                                    </a>
-                                </td>
-                                <td><span class="fa fa-check"></span></td>
-                                <td>Memory</td>
-                                <td>Sugarcult</td>
-                                <td>Palm Trees and Power Lines</td>
-                                <td class="secondary-info">2016-07-23</td>
-                                <td class="secondary-info">3:54</td>
+                            <tr *ngFor="let e of history">
+                                <td>{{e.timestamp}}</td>
+                                <td>{{e.aci}}</td>
                             </tr>
-                            <tr tabindex="2">
-                                <td>
-                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
-                                        <span class="fa fa-play fa-stack-1x"></span>
-                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
-                                    </a>
-                                </td>
-                                <td><span class="fa fa-check"></span></td>
-                                <td>Memory</td>
-                                <td>Sugarcult</td>
-                                <td>Palm Trees and Power Lines</td>
-                                <td class="secondary-info">2016-07-23</td>
-                                <td class="secondary-info">3:54</td>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Grid
+<div class="row">
+    <div class="col col-md-12 albums">
+        <div class="container-fluid spotify-app">
+            <div class="row">
+                <section class="col-md-12 clean-paddings">
+                    <h4>Popular Tracks</h4>
+                    <table class="table table-songs">
+                        <tbody>
+                            <tr *ngFor="let item of popular">
+                                <td><img src ="{{item.images[2].url}}" class='album-image'/></td>
+                                <td>{{item.name}}</td>
                             </tr>
-                            <tr tabindex="1">
-                                <td>
-                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
-                                        <span class="fa fa-play fa-stack-1x"></span>
-                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
-                                    </a>
-                                </td>
-                                <td><span class="fa fa-check"></span></td>
-                                <td>Memory</td>
-                                <td>Sugarcult</td>
-                                <td>Palm Trees and Power Lines</td>
-                                <td class="secondary-info">2016-07-23</td>
-                                <td class="secondary-info">3:54</td>
-                            </tr>
-                            <tr tabindex="2">
-                                <td>
-                                    <a href="#" tabindex="0" class="play-btn fa-stack fa-lg">
-                                        <span class="fa fa-play fa-stack-1x"></span>
-                                        <span class="fa fa-circle-thin fa-stack-2x"></span>
-                                    </a>
-                                </td>
-                                <td><span class="fa fa-check"></span></td>
-                                <td>Memory</td>
-                                <td>Sugarcult</td>
-                                <td>Palm Trees and Power Lines</td>
-                                <td class="secondary-info">2016-07-23</td>
-                                <td class="secondary-info">3:54</td>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--Grid-->
+<div class="row">
+    <div class="col col-md-12 albums">
+        <div class="container-fluid spotify-app">
+            <div class="row">
+                <section class="col-md-12 clean-paddings">
+                    <h4>Albums</h4>
+                    <table class="table table-songs">
+                        <tbody>
+                            <tr *ngFor="let item of albums">
+                                <td><img src ="{{item.images[2].url}}" class='album-image'/></td>
+                                <td>{{item.name}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChartDataSets} from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import {Item} from '../interfaces/artist';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DataPoint, Album, Item } from '../interfaces/ajax.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -26,24 +26,33 @@ export class ProfileComponent implements OnInit, OnDestroy {
   dataLabels : any[] = [];
   aci: any;
 
+  json:any;
+
   ngOnInit(): void {
     this.getProfile();
+    this.getAlbums();
+    //this.getPopular();
     this.startTimer();
+    
   }
 
-  timeLeft: number = 10;
+  timeLeft: number = 120;
   interval;
-
+  timer;
 startTimer() {
-    this.interval = setInterval(() => {
+    this.timer = this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
       } else {
         this.getProfile();
         //every 30 secondsgit commit
-        this.timeLeft = 10;
+        this.timeLeft = 120;
       }
     },1000)
+  }
+
+  stopTimer(){
+    clearInterval(this.timer);
   }
 
   data: Item;
@@ -71,8 +80,8 @@ startTimer() {
     return promise;
   }
 
+  history: DataPoint[] = [];
   getDataPoints(id : string) { 
-   
     const promise = new Promise((resolve, reject) => {
       const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/data?id=${id}`;
       this.httpClient
@@ -85,8 +94,11 @@ startTimer() {
             for (let entry of res) {
               this.dataPoints.push(entry.aci);
               this.dataLabels.push(entry.timestamp);
-              this.dataPoints.reverse();
+              var dataPoint : DataPoint = { "artistId": entry.artist, "aci":entry.aci, "timestamp" : entry.timestamp };
+              this.history.push(dataPoint)
             }
+            this.dataPoints.reverse();
+            this.history = this.dataPoints;
             
           }else{
             if(this.dataPoints.length > 6)
@@ -98,6 +110,9 @@ startTimer() {
             }
             this.dataPoints.push(this.aci);
             this.dataLabels.push(Date.now().toString());
+            
+            var dataPoint : DataPoint = { "artistId": this.id, "aci": this.aci, "timestamp" : Date.now().toString() };
+            this.history.push(dataPoint);
           }
           
 
@@ -132,7 +147,6 @@ startTimer() {
   }
 
   sendPostRequest(data: Object): Observable<Object> {
-    console.log(JSON.stringify(data));
     var config = {
       headers: { 'Content-Type': 'application/json'}
       }
@@ -140,8 +154,54 @@ startTimer() {
     
   }
 
+  albums: Album;
+  getAlbums() { 
+    const promise = new Promise((resolve, reject) => {
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/albums?id=${this.id}`;
+      this.httpClient
+        .get<Album>(apiURL)
+        .toPromise()
+        .then((res: Album) => {
+          this.albums = res['items'];
+          resolve();
+          
+        },
+          err => {
+            // Error
+            reject(err);
+            console.log(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  popular: any[];
+  getPopular() { 
+    const promise = new Promise((resolve, reject) => {
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/popular?id=${this.id}`;
+      this.httpClient
+        .get<any>(apiURL)
+        .toPromise()
+        .then((res: Album) => {
+          this.albums = res['tracks'];
+          console.log(res);
+          resolve();
+          
+        },
+          err => {
+            // Error
+            reject(err);
+            console.log(err);
+          }
+        );
+    });
+    return promise;
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
+    clearInterval(this.timer);
   }
 
   lineChartData: ChartDataSets[] = [
