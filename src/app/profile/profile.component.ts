@@ -4,7 +4,7 @@ import { ChartDataSets} from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataPoint, Album, Item, Tracks, Track } from '../interfaces/ajax.interfaces';
+import { DataPoint, Album, Item, Tracks, Track, Artist } from '../interfaces/ajax.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getProfile();
     this.getAlbums();
     this.getPopular();
+    this.getRelated();
     this.startTimer();
     
   }
@@ -140,7 +141,7 @@ startTimer() {
   updateDataPoints(data : Item, aci : number){   
     var myObj = { "artist": data.id, "name":data.name, "aci":aci,"timestamp": Date.now().toString()};
     this.sendPostRequest(myObj).subscribe((responseBody) => {
-      console.log(responseBody);
+      //console.log(responseBody);
   });
     
 
@@ -185,9 +186,29 @@ startTimer() {
         .toPromise()
         .then((res: Track[]) => {
           this.popularTracks = res['tracks'];
-          console.log(JSON.stringify(res));
           resolve();
           
+        },
+          err => {
+            // Error
+            reject(err);
+            console.log(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  relatedArtists: Artist[];
+  getRelated() { 
+    const promise = new Promise((resolve, reject) => {
+      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/related?id=${this.id}`;
+      this.httpClient
+        .get<Artist[]>(apiURL)
+        .toPromise()
+        .then((res: Artist[]) => {
+          this.relatedArtists = res['artists'];
+          resolve();
         },
           err => {
             // Error
