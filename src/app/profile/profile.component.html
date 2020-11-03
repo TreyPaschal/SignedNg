@@ -73,30 +73,16 @@
                 </div>
             </ng-template>
         </ngb-tab>
+
         <ngb-tab>
             <ng-template ngbTabTitle>Albums</ng-template>
             <ng-template ngbTabContent>
-                <div class="row">
-                    <div class="col col-md-12 albums">
-                        <div class="container-fluid spotify-app">
-                            <div class="row">
-                                <section class="col-md-12 clean-paddings">
-                                    <h4>Albums</h4>
-                                    <table class="table table-songs">
-                                        <tbody>
-                                            <tr *ngFor="let item of albums">
-                                                <td><img src="{{item.images[2].url}}" class='album-image' /></td>
-                                                <td>{{item.name}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <!--albums-->
+              <app-music id="{{id}}"></app-music>
+              
             </ng-template>
         </ngb-tab>
+
         <ngb-tab>
             <ng-template ngbTabTitle>Related Artists</ng-template>
             <ng-template ngbTabContent>
@@ -110,10 +96,11 @@
 
                                         <div class="col mb-3" *ngFor="let item of relatedArtists">
                                             <div class="card">
-                                                <img src="{{item.images[2].url}}" class="card-img-top cropped" alt="...">
+                                                <img src="{{item.images[2].url}}" class="card-img-top cropped"
+                                                    alt="...">
                                                 <div class="card-body">
-                                                    <b class="card-title"> <a [routerLink]="['/profile', item.id]" class="nav-link"
-                                                            href="#">{{item.name}}</a></b>
+                                                    <b class="card-title"> <a [routerLink]="['/profile', item.id]"
+                                                            class="nav-link" href="#">{{item.name}}</a></b>
                                                 </div>
                                             </div>
                                         </div>

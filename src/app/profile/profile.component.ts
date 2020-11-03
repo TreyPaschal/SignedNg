@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataPoint, Album, Item, Tracks, Track, Artist } from '../interfaces/ajax.interfaces';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -30,7 +31,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getProfile();
-    this.getAlbums();
     this.getPopular();
     this.getRelated();
     this.startTimer();
@@ -153,28 +153,6 @@ startTimer() {
       }
     return this.httpClient.post("https://enigmatic-fjord-97696.herokuapp.com/insert/", data, config);
     
-  }
-
-  albums: Album;
-  getAlbums() { 
-    const promise = new Promise((resolve, reject) => {
-      const apiURL = `https://enigmatic-fjord-97696.herokuapp.com/albums?id=${this.id}`;
-      this.httpClient
-        .get<Album>(apiURL)
-        .toPromise()
-        .then((res: Album) => {
-          this.albums = res['items'];
-          resolve();
-          
-        },
-          err => {
-            // Error
-            reject(err);
-            console.log(err);
-          }
-        );
-    });
-    return promise;
   }
 
   popularTracks: Tracks[];

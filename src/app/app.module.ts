@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MusicComponent } from './profile/music/music.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    MusicComponent
   ],
   imports: [
     BrowserModule,
