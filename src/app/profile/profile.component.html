@@ -20,7 +20,13 @@
     </div>
 </div>
 
-<!--Grid-->
+<div class="container">
+        
+    <ngb-tabset [destroyOnHide]="false">
+      
+      <ngb-tab title="ACI History">
+        <ng-template ngbTabContent>
+          <!--History-->
 <div class="row">
     <div class="col col-md-12 albums">
         <div class="container-fluid spotify-app">
@@ -40,46 +46,58 @@
         </div>
     </div>
 </div>
-
-
-
-<div class="row">
-    <div class="col col-md-12 albums">
-        <div class="container-fluid spotify-app">
+        </ng-template>
+      </ngb-tab>
+       
+      <ngb-tab>
+        <ng-template ngbTabTitle>Popular Tracks</ng-template>
+        <ng-template ngbTabContent>
             <div class="row">
-                <section class="col-md-12 clean-paddings">
-                    <h4>Popular Tracks</h4>
-                    <table class="table table-songs">
-                        <tbody>
-                            <tr *ngFor="let track of popularTracks" >
-                                
-                                <td>{{track.name}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+                <div class="col col-md-12 albums">
+                    <div class="container-fluid spotify-app">
+                        <div class="row">
+                            <section class="col-md-12 clean-paddings">
+                                <h4>Popular Tracks</h4>
+                                <table class="table table-songs">
+                                    <tbody>
+                                        <tr *ngFor="let track of popularTracks" >
+                                            
+                                            <td>{{track.name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<!--Grid-->
-<div class="row">
-    <div class="col col-md-12 albums">
-        <div class="container-fluid spotify-app">
+        </ng-template>
+      </ngb-tab>
+       
+      <ngb-tab>
+        <ng-template ngbTabTitle>Albums</ng-template>
+        <ng-template ngbTabContent>
             <div class="row">
-                <section class="col-md-12 clean-paddings">
-                    <h4>Albums</h4>
-                    <table class="table table-songs">
-                        <tbody>
-                            <tr *ngFor="let item of albums">
-                                <td><img src ="{{item.images[2].url}}" class='album-image'/></td>
-                                <td>{{item.name}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+                <div class="col col-md-12 albums">
+                    <div class="container-fluid spotify-app">
+                        <div class="row">
+                            <section class="col-md-12 clean-paddings">
+                                <h4>Albums</h4>
+                                <table class="table table-songs">
+                                    <tbody>
+                                        <tr *ngFor="let item of albums">
+                                            <td><img src ="{{item.images[2].url}}" class='album-image'/></td>
+                                            <td>{{item.name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </ng-template>
+      </ngb-tab>
+   
+    </ngb-tabset>
     </div>
-</div>
