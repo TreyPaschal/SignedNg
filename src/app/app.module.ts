@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MusicComponent } from './profile/music/music.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { AccountComponent } from './user/account/account.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { MusicComponent } from './profile/music/music.component';
     HomeComponent,
     SearchComponent,
     ProfileComponent,
-    MusicComponent
+    MusicComponent,
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
