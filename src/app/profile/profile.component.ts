@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     
   }
 
-  timeLeft: number = 120;
+  timeLeft: number = 20;
   interval;
   timer;
 startTimer() {
@@ -47,7 +47,7 @@ startTimer() {
       } else {
         this.getProfile();
         //every 30 secondsgit commit
-        this.timeLeft = 120;
+        this.timeLeft = 20;
       }
     },1000)
   }
