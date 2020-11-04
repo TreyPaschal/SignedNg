@@ -134,7 +134,7 @@ startTimer() {
   setAci (data :Item){
     var f :number = data.followers.total; //each equals 1 cent
     var p = data.popularity; //for every popularity point subtract 1/100 (0.001) 
-    var value = (101 - p) / 10000;
+    var value = (101 - p) / 100;
            return (value * f).toFixed(2);;     
   };
 
